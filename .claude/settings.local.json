@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3:*)",
+      "Read(//c/Users/ehodg/.claude/plugins/cache/ui-ux-pro-max-skill/ui-ux-pro-max/2.0.1/.claude/skills/ui-ux-pro-max/**)",
+      "Bash(python scripts/search.py \"software engineer portfolio dark mode professional tech\" --design-system -p \"Elliot Hodgson Portfolio\" -f markdown)",
+      "Bash(python:*)",
+      "Bash(npm install:*)",
+      "Bash(npm run:*)",
+      "Bash(npm:*)",
+      "Bash(rm:*)"
+    ]
+  }
+}
