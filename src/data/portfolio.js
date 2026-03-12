@@ -215,13 +215,13 @@ export const projects = [
     highlights: [
       "McDonald's promotional AR game triggered by Happy Meal packaging",
       'Playmobil companion app with markerless AR scene placement',
-      'Published to both App Store and Google Play',
+      'Published to the App Store (iOS); Android version no longer available',
       'Shared Unity/C# codebase with ARKit and ARCore targets',
       'Coordinated directly with client brand teams for asset delivery and review cycles',
     ],
     tags: ['Unity', 'C#', 'ARKit', 'ARCore', 'iOS', 'Android', 'AR'],
     images: ['/images/ar-games-1.jpg', '/images/ar-games-2.jpg'],
-    link: null,
+    link: 'https://apps.apple.com/gb/app/playmobil-le-monde-du-sport/id1566873842',
     github: null,
   },
   {
