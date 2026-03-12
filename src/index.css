@@ -1704,6 +1704,8 @@ section {
 .pp-gallery-arrow:hover { background: var(--color-accent); color: #0A0F1C; }
 .pp-gallery-arrow-prev { left: 0.75rem; }
 .pp-gallery-arrow-next { right: 0.75rem; }
+[data-theme="light"] .pp-gallery-arrow { background: rgba(255, 255, 255, 0.85); }
+[data-theme="light"] .pp-gallery-arrow:hover { background: var(--color-accent); color: #fff; }
 
 .pp-gallery-dots {
   position: absolute;
