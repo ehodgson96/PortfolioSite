@@ -16,8 +16,6 @@ export const about = `Backend software engineer with 7 years' experience buildin
 export const stats = [
   { value: '7+', label: 'Years Experience' },
   { value: '4',  label: 'Companies' },
-  { value: '95%', label: 'Test Coverage' },
-  { value: '3',  label: 'Personal Projects' },
 ]
 
 export const skills = [
@@ -258,12 +256,5 @@ export const education = [
     location: 'Sheffield, UK',
     period: 'Sep 2015 – Jun 2018',
     grade: 'Second Class Honours (1st Division)',
-  },
-  {
-    institution: 'Blackpool Sixth Form',
-    qualification: 'BTEC Lv 3 Subsidiary Diploma in Software Development',
-    location: 'Blackpool, UK',
-    period: 'Sep 2012 – Jun 2014',
-    grade: 'Distinction*, Distinction*',
   },
 ]

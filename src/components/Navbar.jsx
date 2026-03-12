@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useLocation } from 'react-router-dom'
 import { profile } from '../data/portfolio'
+import useTheme from '../hooks/useTheme'
 
 const NAV_LINKS = [
   { label: 'About',      href: '#about' },
@@ -16,6 +17,7 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false)
   const location = useLocation()
   const isHome = location.pathname === '/'
+  const { theme, toggle } = useTheme()
 
   // Prefix hash links with '/' when not on the home page so the browser
   // navigates to home first, then scrolls to the section.
@@ -43,22 +45,19 @@ export default function Navbar() {
             </a>
           ))}
 
-          <a
-            href={profile.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="navbar-link navbar-icon-link"
-            aria-label="GitHub profile"
-            onClick={closeMenu}
-          >
-            <GitHubIcon />
-          </a>
-
           <a href={profile.cvFile} download className="btn btn-primary navbar-cta" onClick={closeMenu}>
             <DownloadIcon />
             Download CV
           </a>
         </nav>
+
+        <button
+          className="navbar-theme-toggle"
+          onClick={toggle}
+          aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+        >
+          {theme === 'dark' ? <SunIcon /> : <MoonIcon />}
+        </button>
 
         <button
           className="navbar-hamburger"
@@ -70,6 +69,23 @@ export default function Navbar() {
         </button>
       </div>
     </header>
+  )
+}
+
+function SunIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <circle cx="12" cy="12" r="4" />
+      <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" />
+    </svg>
+  )
+}
+
+function MoonIcon() {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+    </svg>
   )
 }
 

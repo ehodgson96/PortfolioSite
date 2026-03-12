@@ -9,11 +9,13 @@ export default function Hero() {
 
   // heroRef — the <section> element. Used as the coordinate origin for
   // gradient blob tracking (window-level listener in the hook).
-  const heroRef  = useRef(null)
+  const heroRef      = useRef(null)
 
   // wrapRef — the glass wrapper div. Used for the edge-only proximity glow.
-  const wrapRef  = useRef(null)
-  const rafRef   = useRef(null)
+  const wrapRef      = useRef(null)
+  const rafRef       = useRef(null)
+  const photoWrapRef = useRef(null)
+  const pingRef      = useRef(null)
 
   // Gradient blob tracking — window-level listener inside the hook so it
   // fires even when the cursor is over the higher-z glass panel.
@@ -62,6 +64,28 @@ export default function Hero() {
     }
   }, [])
 
+  // Photo ping: trigger once on mouseenter, let the animation complete fully
+  // before allowing it to re-trigger. Removed on animationend, not mouseleave.
+  useEffect(() => {
+    const wrap = photoWrapRef.current
+    const ping = pingRef.current
+    if (!wrap || !ping) return
+
+    const startPing = () => {
+      ping.classList.remove('pinging')
+      void ping.offsetWidth // force reflow to restart if needed
+      ping.classList.add('pinging')
+    }
+    const endPing = () => ping.classList.remove('pinging')
+
+    wrap.addEventListener('mouseenter', startPing)
+    ping.addEventListener('animationend', endPing)
+    return () => {
+      wrap.removeEventListener('mouseenter', startPing)
+      ping.removeEventListener('animationend', endPing)
+    }
+  }, [])
+
   return (
     <section id="hero" className="hero" aria-label="Introduction" ref={heroRef}>
       <HeroGradient interactive={true} blobRef={blobRef} />
@@ -76,7 +100,7 @@ export default function Hero() {
             </div>
 
             <h1 className="hero-name">
-              Elliot J. <span>Hodgson</span>
+              Hello, I'm <span>Elliot</span>
             </h1>
 
             <p className="hero-title">Software Engineer</p>
@@ -103,11 +127,12 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hero-photo-wrap">
+        <div className="hero-photo-wrap" ref={photoWrapRef}>
+          <span className="hero-photo-ping" ref={pingRef} aria-hidden="true" />
           {!photoError ? (
             <img
               src={profile.photo}
-              alt="Elliot J. Hodgson"
+              alt="Elliot Hodgson"
               className="hero-photo"
               onError={() => setPhotoError(true)}
             />

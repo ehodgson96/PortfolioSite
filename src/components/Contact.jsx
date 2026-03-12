@@ -36,15 +36,6 @@ export default function Contact() {
               <ArrowIcon className="contact-card-arrow" />
             </a>
 
-            <a href={profile.github} target="_blank" rel="noopener noreferrer" className="contact-card">
-              <div className="contact-card-icon"><GitHubIcon /></div>
-              <div className="contact-card-content">
-                <div className="contact-card-label">GitHub</div>
-                <div className="contact-card-value">github.com/ehodgson96</div>
-              </div>
-              <ArrowIcon className="contact-card-arrow" />
-            </a>
-
             <a href={`tel:${profile.phone.replace(/\s/g, '')}`} className="contact-card">
               <div className="contact-card-icon"><PhoneIcon /></div>
               <div className="contact-card-content">
